@@ -1,0 +1,204 @@
+.todo_head{
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: flex;
+flex-direction: column;
+    
+
+
+
+}
+.todo-app{
+    margin: 80px 170px;
+}
+.todo_head h1{
+    font-size: 70px;
+    font-weight: 500;
+    padding: 0 30px;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+padding: 30px;
+margin: 30px;
+
+}
+
+.todo-overview{
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.todo-overview h2{
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 0 30px;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.todo-overview p{
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px;
+
+}
+.wether-key h2{
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 0 30px;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.todo-key li{
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px;
+    list-style: circle;
+
+
+
+}
+.todo-tech h2{
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 0 30px;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.todo-tech li{
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px;
+    list-style: circle;
+
+
+
+}
+.todo-link{
+    margin-top: 50px;
+       align-items: center;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 0 30px;
+    display: flex;
+  
+   width: 100%;
+    
+
+
+
+}
+.todo-link-git h4{
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+ 
+}
+.todo-link-git a{
+ text-decoration: none;
+ color: antiquewhite;
+}
+
+.todo-link-git{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+
+}
+.todo-img{
+    padding: 0px;
+    margin-top: 50px;
+   
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 100px;
+   
+   
+}
+.todo-img1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+   
+    
+}
+.todo-imgh2{
+    padding: 0 30px;
+    margin-top: 50px;
+}
+.todo-imgh2 h2{
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 0 30px;
+}
+
+
+@media(max-width:768px){
+    .todo-app{
+        margin: 50px 70px;
+    }
+    .todo_head h1{
+        font-size: 50px;
+
+    }
+    .todo-overview h2{
+        font-size: 34px;
+    }
+    .todo-overview p{
+        font-size: 20px;
+    }
+    .todo-key h2{
+        font-size: 34px;
+    }
+    .todo-key li{
+        font-size: 20px;
+    }
+    .todo-tech h2{
+        font-size: 34px;
+    }
+    .todo-tech li{
+        font-size: 20px;
+    }
+    .todo-imgh2 h2{
+        font-size: 34px;
+    }
+    .todo-img{
+        flex-direction: column;
+        gap: 40px;
+    }
+    .todo-link-git h2{
+        font-size: 34px;
+
+    }
+    .todo-link-git a{
+        font-size: 20px;
+    }
+
+
+}

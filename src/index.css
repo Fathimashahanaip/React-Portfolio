@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    background: rgb(30, 29, 29);
+    color: antiquewhite;
+    font-family: 'EB+Garamond';
+
+}

@@ -1,0 +1,102 @@
+/* .card-main{
+    border-color: antiquewhite;
+    
+    border-color: antiquewhite;
+    align-items: center;
+    flex-direction: column;
+
+    
+} */
+.project{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 80px;
+    margin: 80px 170px;
+}
+.project-title{
+    position: relative;
+}
+.project-title h1{
+    padding: 0 30px;
+    font-size: 70px;
+    font-weight: 600;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+
+}
+.card-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px;
+    border-radius: 10px;
+    border:2px solid antiquewhite;
+    transition: 0.4s;
+    cursor: pointer;
+}
+.project-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
+    align-items: center;
+}
+
+.card-title{
+    font-size: 28px;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+    background: antiquewhite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+}
+.button-project{
+    padding: 15px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+   
+
+}
+.button-project:hover{
+    transform: scale(0.5);
+    background-image: antiquewhite;
+}
+.card-main:hover{
+    transform: scale(1.2);
+    border :2px antiquewhite;
+    background-image:  linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+}
+
+@media(max-width:768px){
+    .project{
+        align-items: center;
+        gap: 80px;
+        margin: 20px 70px;
+    }
+
+    .project-title h1{
+        font-size: 50px;
+        
+        padding: 0;
+
+    }
+    .project-container{
+        gap: 30px;
+         display: flex;
+        flex-direction: column; 
+        /* line-height: 32px;
+        max-width: 300px; */
+
+    }
+}

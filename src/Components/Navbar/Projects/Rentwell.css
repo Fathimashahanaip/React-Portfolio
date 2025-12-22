@@ -1,0 +1,203 @@
+.rent-well_head{
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: flex;
+flex-direction: column;
+    
+
+
+
+}
+.rent-well{
+    margin: 80px 170px;
+}
+.rent-well_head h1{
+    font-size: 70px;
+    font-weight: 500;
+    padding: 0 30px;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+padding: 30px;
+margin: 30px;
+
+}
+
+.rent-overview{
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.rent-overview h2{
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 0 30px;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.rent-overview p{
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px;
+
+}
+.rent-key h2{
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 0 30px;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.rent-key li{
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px;
+    list-style: circle;
+
+
+
+}
+.rent-tech h2{
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 0 30px;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.rent-tech li{
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px;
+    list-style: circle;
+
+
+
+}
+.link{
+    margin-top: 50px;
+       align-items: center;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 0 30px;
+    display: flex;
+  
+   width: 100%;
+    
+
+
+
+}
+.link-git h4{
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+ 
+}
+.link-git a{
+ text-decoration: none;
+ color: antiquewhite;
+}
+
+.link-git{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+
+}
+.img{
+    padding: 0px;
+    margin-top: 50px;
+   
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 100px;
+   
+   
+}
+.img1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+   
+    
+}
+.imgh2{
+    padding: 0 30px;
+    margin-top: 50px;
+}
+.imgh2 h2{
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 0 30px;
+}
+
+@media(max-width:768px){
+    .rent-well{
+        margin: 50px 70px;
+    }
+    .rent-well_head h1{
+        font-size: 50px;
+
+    }
+    .rent-overview h2{
+        font-size: 34px;
+    }
+    .rent-overview p{
+        font-size: 20px;
+    }
+    .rent-key h2{
+        font-size: 34px;
+    }
+    .rent-key li{
+        font-size: 20px;
+    }
+    .rent-tech h2{
+        font-size: 34px;
+    }
+    .rent-tech li{
+        font-size: 20px;
+    }
+    .imgh2 h2{
+        font-size: 34px;
+    }
+    .img{
+        flex-direction: column;
+        gap: 40px;
+    }
+    .link-git h2{
+        font-size: 34px;
+
+    }
+    .link-git a{
+        font-size: 20px;
+    }
+
+
+}

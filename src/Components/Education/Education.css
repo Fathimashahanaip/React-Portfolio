@@ -1,0 +1,185 @@
+.education{
+    margin: 200px 170px;
+    
+    
+    
+}
+.edu-title h1{
+    margin: 20px;
+    font-size: 60px;
+    font-weight: 600;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    
+}
+.pg-title h2{
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 25px 10px;
+    font-size: 50px;
+
+
+}
+.pg-title h3{
+   
+    font-weight: 500;
+    font-size: 20px;
+    
+}
+.pg-college{
+    display: flex;
+    gap: 130px;
+}
+.pg-cllg{
+    flex-direction: column;
+    padding: 15px 0;
+   
+}
+.degree-title h2{
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 25px 10px;
+    font-size: 50px;
+
+
+}
+.degree-title h3{
+    font-weight: 500;
+    font-size: 20px;
+    
+    
+}
+.degree-college{
+    display: flex;
+    gap: 330px;
+}
+.degree-cllg{
+    flex-direction: column;
+    padding: 15px 0;
+   
+}
+
+
+.two-title h2{
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 25px 10px;
+    font-size: 50px;
+
+
+}
+.two-title h3{
+   
+    font-weight: 500;
+    font-size: 20px;
+    
+}
+.two-college{
+    display: flex;
+    gap: 400px;
+}
+.two-cllg{
+    flex-direction: column;
+    padding: 15px 0;
+   
+}
+
+
+.ten-title h2{
+    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 25px 10px;
+    font-size: 50px;
+
+}
+.ten-title h3{
+   
+    font-weight: 500;
+    font-size: 20px;
+    
+}
+.ten-college{
+    display: flex;
+    gap: 400px;
+}
+.ten-cllg{
+    flex-direction: column;
+    padding: 15px 0;
+   
+}
+@media(max-width:768px){
+    .education{
+        margin: 20px 30px;
+
+    }
+    .edu-title h1{
+        font-size: 40px;
+    }
+    .pg-title h2{
+        font-size: 30px;
+
+    }
+    .pg-title h3{
+   
+        font-weight: 500;
+        font-size: 15px;
+        
+    }
+    .pg-college{
+        gap: 50px;
+    }
+    .degree-title h2{
+        font-size: 30px;
+
+    }
+    .degree-title h3{
+   
+        font-weight: 500;
+        font-size: 15px;
+        
+    }
+    .degree-college{
+        gap: 240px;
+    }
+    .two-title h2{
+        font-size: 30px;
+
+    }
+    .two-title h3{
+   
+        font-weight: 500;
+        font-size: 15px;
+        
+    }
+    .two-college{
+        gap: 310px;
+    }
+    .ten-title h2{
+        font-size: 30px;
+
+    }
+    .ten-title h3{
+   
+        font-weight: 500;
+        font-size: 15px;
+        
+    }
+    .ten-college{
+        gap: 310px;
+    }
+   
+
+}
