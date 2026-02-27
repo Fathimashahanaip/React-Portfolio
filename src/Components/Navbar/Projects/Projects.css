@@ -1,102 +1,130 @@
-/* .card-main{
-    border-color: antiquewhite;
-    
-    border-color: antiquewhite;
-    align-items: center;
-    flex-direction: column;
+.project {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
-    
-} */
-.project{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 80px;
-    margin: 80px 170px;
-}
-.project-title{
-    position: relative;
-}
-.project-title h1{
-    padding: 0 30px;
-    font-size: 70px;
-    font-weight: 600;
-    background: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+.project-title h2 {
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    background: var(--primary-gradient);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
+    margin: 0 0 60px 0;
+}
 
-}
-.card-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-    padding: 60px;
-    border-radius: 10px;
-    border:2px solid antiquewhite;
-    transition: 0.4s;
-    cursor: pointer;
-}
-.project-container{
+.project-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
     gap: 40px;
-    margin-bottom: 80px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.project-item {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr; /* two-column layout */
     align-items: center;
+    gap: 32px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.3s ease;
 }
 
-.card-title{
-    font-size: 28px;
-    font-weight: 800;
-    align-items: center;
-    justify-content: center;
-    background: antiquewhite;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-
-}
-.button-project{
-    padding: 15px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: 0.5s;
-   
-
-}
-.button-project:hover{
-    transform: scale(0.5);
-    background-image: antiquewhite;
-}
-.card-main:hover{
-    transform: scale(1.2);
-    border :2px antiquewhite;
-    background-image:  linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+.project-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(222, 222, 80, 0.3);
+    box-shadow: var(--shadow-md);
 }
 
-@media(max-width:768px){
-    .project{
-        align-items: center;
-        gap: 80px;
-        margin: 20px 70px;
+.project-image-wrapper{
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.02);
+}
+
+.project-image{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.project-content{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-header h3 {
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 20px 0;
+}
+
+.project-description {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.project-tech{
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 8px 0;
+    letter-spacing: 0.4px;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--text-primary);
+    font-size: clamp(14px, 1.5vw, 16px);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: rgba(222, 222, 80, 0.1);
+    border: 1px solid rgba(222, 222, 80, 0.3);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: rgba(222, 222, 80, 0.2);
+    border-color: rgba(222, 222, 80, 0.5);
+    transform: translateX(5px);
+}
+
+
+@media(max-width: 1024px) {
+    .project {
+        padding: 80px 40px;
     }
-
-    .project-title h1{
-        font-size: 50px;
-        
-        padding: 0;
-
+    .project-container {
+        grid-template-columns: 1fr; /* Single column on tablet */
     }
-    .project-container{
-        gap: 30px;
-         display: flex;
-        flex-direction: column; 
-        /* line-height: 32px;
-        max-width: 300px; */
+    .project-item{
+        grid-template-columns: 1fr;
+    }
+}
 
+@media(max-width: 768px) {
+    .project {
+        padding: 60px 30px;
+    }
+    
+    .project-container {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+    
+    .project-item {
+        padding: 25px;
+        grid-template-columns: 1fr;
     }
 }

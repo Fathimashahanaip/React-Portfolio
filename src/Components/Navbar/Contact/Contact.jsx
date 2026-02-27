@@ -70,7 +70,7 @@ const Contact = () => {
         <div className="contact-right">
 
         <form  className='contact-form' onSubmit={onSubmit} >
-        <label htmlFor=''>Yoour Name </label>
+        <label htmlFor='name'>Your Name</label>
         <input type='text' placeholder='Enter your name' name='name'></input>
         <label htmlFor=''> Your Email</label>
         <input type='email' placeholder='Enter your Email' name='email'></input>

@@ -1,11 +1,64 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-body{
-    height: 100vh;
-    background: rgb(30, 29, 29);
-    color: antiquewhite;
-    font-family: 'EB+Garamond';
 
+:root {
+    --primary-gradient: linear-gradient(to right, rgb(222, 222, 80), rgb(85, 156, 73));
+    --dark-bg: #0a0a0f;
+    --dark-surface: #151520;
+    --dark-surface-elevated: #1e1e2e;
+    --text-primary: #ffffff;
+    --text-secondary: #b4b4c4;
+    --text-muted: #8a8a9a;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 30px rgba(222, 222, 80, 0.3);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for sticky navbar */
+}
+
+body{
+    min-height: 100vh;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    opacity: 0.8;
+}
+
+/* Selection */
+::selection {
+    background: rgba(222, 222, 80, 0.3);
+    color: var(--text-primary);
 }
