@@ -12,6 +12,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0 0 60px 0;
+    text-align: center;
 }
 
 .project-container {
@@ -23,10 +24,10 @@
 }
 
 .project-item {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr; /* two-column layout */
-    align-items: center;
-    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
@@ -51,6 +52,7 @@
 
 .project-image{
     width: 100%;
+    max-height: 260px;
     display: block;
     object-fit: cover;
 }
@@ -109,9 +111,6 @@
     .project-container {
         grid-template-columns: 1fr; /* Single column on tablet */
     }
-    .project-item{
-        grid-template-columns: 1fr;
-    }
 }
 
 @media(max-width: 768px) {
@@ -125,6 +124,5 @@
     
     .project-item {
         padding: 25px;
-        grid-template-columns: 1fr;
     }
 }

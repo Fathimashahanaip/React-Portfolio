@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import './Skills.css'
 
 const Skills = () => {
@@ -8,7 +8,10 @@ const Skills = () => {
     { name: "React.js", icon: "⚛️" },
     { name: "Node.js", icon: "🟢" },
     { name: "MongoDB", icon: "🍃" },
-    { name: "Express.js", icon: "🚏" }
+    { name: "Express.js", icon: "🚀" },
+    { name: "Next.js", icon: "⚡" },
+    { name: "Nest.js", icon: "🧱" },
+    { name: "PostgreSQL", icon: "🐘" }
   ]
 
   return (

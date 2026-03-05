@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Contact.css'
 // import email from '../../../assets/email.jpg.'
 // import location from '../../../assets/locatiom.jpg.'
@@ -12,8 +12,14 @@ import location from '../../../assets/location.jpg'
 
 
 const Contact = () => {
+  const [status, setStatus] = useState({ type: 'idle', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const onSubmit = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return
+    setIsSubmitting(true)
+    setStatus({ type: 'idle', message: '' })
     const formData = new FormData(event.target);
 
     formData.append("access_key", "d33f9582-6993-4c88-adc2-89edd4d13987");
@@ -21,18 +27,26 @@ const Contact = () => {
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: json
-    }).then((res) => res.json());
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      }).then((res) => res.json());
 
-    if (res.success) {
-      alert(res.message)
-
+      if (res.success) {
+        setStatus({ type: 'success', message: 'Message sent successfully. Thanks for reaching out!' })
+        event.target.reset()
+      } else {
+        setStatus({ type: 'error', message: res.message || 'Something went wrong. Please try again.' })
+      }
+    } catch (err) {
+      setStatus({ type: 'error', message: 'Network error. Please try again later.' })
+    } finally {
+      setIsSubmitting(false)
     }
   };
 
@@ -71,12 +85,23 @@ const Contact = () => {
 
         <form  className='contact-form' onSubmit={onSubmit} >
         <label htmlFor='name'>Your Name</label>
-        <input type='text' placeholder='Enter your name' name='name'></input>
+        <input type='text' placeholder='Enter your name' name='name' required></input>
         <label htmlFor=''> Your Email</label>
-        <input type='email' placeholder='Enter your Email' name='email'></input>
+        <input type='email' placeholder='Enter your Email' name='email' required></input>
         <label htmlFor=''> Write your message here</label>
-        <textarea name='message' rows="8" placeholder='Enter your message'></textarea>
-        <button  className="contact-submit" type='submit'>Submit Now</button>
+        <textarea name='message' rows="8" placeholder='Enter your message' required></textarea>
+        <button  className="contact-submit" type='submit' disabled={isSubmitting}>
+          {isSubmitting ? 'Sending...' : 'Submit Now'}
+        </button>
+        {status.message && (
+          <p
+            className={`contact-status ${status.type}`}
+            role="status"
+            aria-live="polite"
+          >
+            {status.message}
+          </p>
+        )}
         </form>
         </div>
       </div>

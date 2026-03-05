@@ -1,37 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import './Navbar.css'
 import logoo from '../../assets/logo.png'
 import uderline from '../../assets/uderline.png'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
 import menu_close from '../../assets/menuclose.svg'
 import menu_open from '../../assets/menuopen.svg'
-import upparrow from '../../assets/uparrow.svg'
 
 
 const Navbar = () => {
   const [menu, setmenu] = useState()
-  const [showUpArrow, setShowUpArrow] = useState(false)
   const menuRef=useRef()
-  const upArrowRef=useRef()
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowUpArrow(true)
-        if (upArrowRef.current) {
-          upArrowRef.current.classList.add('visible')
-        }
-      } else {
-        setShowUpArrow(false)
-        if (upArrowRef.current) {
-          upArrowRef.current.classList.remove('visible')
-        }
-      }
-    }
-    
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
   
   const openMenu=()=>{
     if (window.innerWidth <= 768 && menuRef.current) {
@@ -96,19 +73,19 @@ const Navbar = () => {
     <ul  ref={menuRef}  className="navbar-nav">
       <img src={menu_close}  onClick={closeMenu}  alt="" width={50} height={50} className='nav-mob-close' />
       <li className="nav-item active">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("home", "#hero");}} className="nav-link" href="#hero">About{menu=="home"?<img src={uderline} alt='' width={50} height={20}/>:<></>}</a>
+        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("home", "#hero");}} className="nav-link" href="#hero">About</a>
       </li>
       <li className="nav-item">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("experience", "#experience");}} className="nav-link" href='#experience'>Experience {menu=="experience"?<img src={uderline} alt='' width={50} height={20}/>:<></>}</a>
+        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("experience", "#experience");}} className="nav-link" href='#experience'>Experience</a>
       </li>
       <li className="nav-item">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("skills", "#skills");}} className="nav-link" href="#skills">Skills{menu=="skills"?<img src={uderline} alt='' width={50} height={20}/>:<></>}</a>
+        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("skills", "#skills");}} className="nav-link" href="#skills">Skills</a>
       </li>
       <li className="nav-item">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("project", "#project");}} className="nav-link" href="#project">Projects{menu=="project"?<img src={uderline} alt='' width={50} height={20}/>:<></>}</a>
+        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("project", "#project");}} className="nav-link" href="#project">Projects</a>
       </li>
       <li className="nav-item">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("contact", "#contact");}} className="nav-link disabled" href="#contact">Contact{menu=="contact"?<img src={uderline} alt='' width={50} height={20}/>:<></>}</a>
+        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("contact", "#contact");}} className="nav-link disabled" href="#contact">Contact</a>
       </li>
       <li>
         <button onClick={(e)=>{e.preventDefault(); handleLinkClick("contact", "#contact");}} className="nav-connect">Connect with Me</button>
@@ -121,10 +98,6 @@ const Navbar = () => {
   </div>
 </nav>
 
-
-<div className="upp-arrow" ref={upArrowRef}>
-   <AnchorLink className='anckor-link' offset={50} href='#hero'>     <img src={upparrow} alt="Scroll to top"  width={50} height={50}/></AnchorLink>
-        </div> 
 
     </div>
   )
