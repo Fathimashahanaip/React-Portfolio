@@ -46,7 +46,7 @@
   width: 100%;
   border-radius: calc(var(--radius) - 8px);
   object-fit: cover;
-  object-position: top;
+  object-position: center top;
   max-height: 500px;
   display: block;
 }

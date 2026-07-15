@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { SiReact, SiNextdotjs, SiNodedotjs, SiMongodb, SiPostgresql, SiExpress } from 'react-icons/si'
 import { HiArrowRight, HiDownload } from 'react-icons/hi'
-import profile from '../../../assets/profile.jpg'
+import profile from '../../../assets/profile.png'
 import resume from '../../../assets/Fathima_Shahana_Ip_resume.pdf'
 import './Hero.css'
 
@@ -45,8 +45,8 @@ const Hero = () => {
 
           <motion.p className="hero-desc" {...fadeUp(0.2)}>
             I'm FATHIMA SHAHANA IP — a Full Stack Developer crafting elegant,
-            performant web applications with the MERN stack. I turn complex
-            problems into clean, user-focused digital experiences.
+            performant web applications with the MERN stack and PERN stack. I turn
+            complex problems into clean, user-focused digital experiences.
           </motion.p>
 
           <motion.div className="hero-actions" {...fadeUp(0.3)}>
