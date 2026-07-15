@@ -1,105 +1,149 @@
-import React, { useRef, useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { HiMenu, HiX, HiMoon, HiSun } from 'react-icons/hi'
 import './Navbar.css'
-import logoo from '../../assets/logo.png'
-import uderline from '../../assets/uderline.png'
-import menu_close from '../../assets/menuclose.svg'
-import menu_open from '../../assets/menuopen.svg'
 
+const links = [
+  { label: 'Home', href: '#hero' },
+  { label: 'About', href: '#about' },
+  { label: 'Education', href: '#education' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#project' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
+]
 
-const Navbar = () => {
-  const [menu, setmenu] = useState()
-  const menuRef=useRef()
-  
-  const openMenu=()=>{
-    if (window.innerWidth <= 768 && menuRef.current) {
-      menuRef.current.style.transform="translateX(0)";
+const Navbar = ({ darkMode, toggleDark }) => {
+  const [active, setActive] = useState('Home')
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const handleNav = (label, href) => {
+    setActive(label)
+    setMobileOpen(false)
+    const el = document.querySelector(href)
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 80
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' })
     }
   }
-  const closeMenu=()=>{
-    if (window.innerWidth <= 768 && menuRef.current) {
-      menuRef.current.style.transform="translateX(-100%)";
-    }
-  }
-  
-  const handleLinkClick = (menuName, href) => {
-    setmenu(menuName);
-    closeMenu();
-    // Small delay to ensure menu closes before scrolling
-    setTimeout(() => {
-      if (href) {
-        const element = document.querySelector(href);
-        if (element) {
-          const navbarHeight = 80; // Approximate navbar height + margin
-          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - navbarHeight;
-          
-          // Use requestAnimationFrame to ensure smooth scroll without layout shifts
-          requestAnimationFrame(() => {
-            window.scrollTo({
-              top: Math.max(0, offsetPosition),
-              behavior: 'smooth'
-            });
-          });
-        }
-      }
-    }, 300);
-  }
-
 
   return (
-    // <div className='navbar'>
-    //   <img src={logoo } alt="" width={130}height={100}/>
-    //   <ul className='nav-menu'>
-    //     <li>Home</li>
-    //     <li>About Me</li>
-    //     <li>Project</li>
-    //     <li>Portfolio</li>
-    //     <li>Contact</li>
-       
-    //   </ul>
-    //   <div className="nav-connect">
-    //     <button>Connect with Me</button>
+    <>
+      <motion.nav
+        className={`navbar-wrap ${scrolled ? 'scrolled' : ''}`}
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        <div className="navbar-inner">
+          <a className="navbar-logo" href="#hero" onClick={e => { e.preventDefault(); handleNav('Home', '#hero') }}>
+            <span className="logo-text">FATHIMA <span>SHAHANA IP</span></span>
+          </a>
 
-    //   </div>
-      
-<div >
- 
+          <ul className="navbar-links">
+            {links.map(link => (
+              <li key={link.label}>
+                <a
+                  className={`nav-link ${active === link.label ? 'active' : ''}`}
+                  href={link.href}
+                  onClick={e => { e.preventDefault(); handleNav(link.label, link.href) }}
+                >
+                  {link.label}
+                  {active === link.label && (
+                    <motion.span className="nav-dot" layoutId="navDot" />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
 
+          <div className="navbar-actions">
+            <button className="theme-toggle" onClick={toggleDark} aria-label="Toggle theme">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={darkMode ? 'sun' : 'moon'}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {darkMode ? <HiSun /> : <HiMoon />}
+                </motion.span>
+              </AnimatePresence>
+            </button>
 
-<nav className="navbar">
-  <img src={menu_open} onClick={openMenu} alt="" width={50} height={50} className='nav-mob-open'/>
+            <a
+              className="btn-primary nav-cta"
+              href="#contact"
+              onClick={e => { e.preventDefault(); handleNav('Contact', '#contact') }}
+            >
+              Let's Talk
+            </a>
 
-  <div className="collapse navbar-collapse" id="navbarNav">
-    <ul  ref={menuRef}  className="navbar-nav">
-      <img src={menu_close}  onClick={closeMenu}  alt="" width={50} height={50} className='nav-mob-close' />
-      <li className="nav-item active">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("home", "#hero");}} className="nav-link" href="#hero">About</a>
-      </li>
-      <li className="nav-item">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("experience", "#experience");}} className="nav-link" href='#experience'>Experience</a>
-      </li>
-      <li className="nav-item">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("skills", "#skills");}} className="nav-link" href="#skills">Skills</a>
-      </li>
-      <li className="nav-item">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("project", "#project");}} className="nav-link" href="#project">Projects</a>
-      </li>
-      <li className="nav-item">
-        <a onClick={(e)=>{e.preventDefault(); handleLinkClick("contact", "#contact");}} className="nav-link disabled" href="#contact">Contact</a>
-      </li>
-      <li>
-        <button onClick={(e)=>{e.preventDefault(); handleLinkClick("contact", "#contact");}} className="nav-connect">Connect with Me</button>
-      </li>
-    </ul>
-    
- 
- 
+            <button className="mobile-toggle" onClick={() => setMobileOpen(o => !o)} aria-label="Menu">
+              {mobileOpen ? <HiX /> : <HiMenu />}
+            </button>
+          </div>
+        </div>
+      </motion.nav>
 
-  </div>
-</nav>
-
-
-    </div>
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <motion.div
+              className="mobile-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              className="mobile-menu"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 200 }}
+            >
+              <div className="mobile-menu-header">
+                <span className="logo-text">FATHIMA <span>SHAHANA IP</span></span>
+                <button onClick={() => setMobileOpen(false)}><HiX /></button>
+              </div>
+              <ul className="mobile-links">
+                {links.map((link, i) => (
+                  <motion.li
+                    key={link.label}
+                    initial={{ x: 30, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: i * 0.06 }}
+                  >
+                    <a
+                      href={link.href}
+                      className={active === link.label ? 'active' : ''}
+                      onClick={e => { e.preventDefault(); handleNav(link.label, link.href) }}
+                    >
+                      {link.label}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+              <div className="mobile-bottom">
+                <button className="theme-toggle" onClick={toggleDark}>
+                  {darkMode ? <HiSun /> : <HiMoon />}
+                  {darkMode ? 'Light Mode' : 'Dark Mode'}
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 

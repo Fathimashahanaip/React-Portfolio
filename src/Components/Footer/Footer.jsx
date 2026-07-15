@@ -1,53 +1,105 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import { SiGithub } from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa'
+import { HiArrowUp, HiHeart } from 'react-icons/hi'
 import './Footer.css'
-import logo from '../../assets/logo.png'
-import git from '../../assets/git.svg'
-import linkedn from '../../assets/link.svg'
 
+const links = [
+  { label: 'Home', href: '#hero' },
+  { label: 'About', href: '#about' },
+  { label: 'Education', href: '#education' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#project' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
+]
+
+const socials = [
+  { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/fathima-shahanaip/', label: 'LinkedIn', color: '#0A66C2' },
+  { icon: <SiGithub />, href: 'https://github.com/shahanaip-dev', label: 'GitHub', color: 'var(--text-primary)' },
+]
+
+const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
 const Footer = () => {
   return (
-    <div id='footer' className='footer'>
-        <div className="footer-top">
-            <div className="footer-top-left">
-                <div className="footer-logo-wrapper">
-                    <img src={logo} alt="Fathima Shahana IP Logo" className="footer-logo" />
-                </div>
-                <p className="footer-description">I am a full stack Developer from, INDIA. Passionate about creating innovative web solutions and bringing ideas to life through code.</p>
-                <div className="footer-social">
-                    <a href='https://www.linkedin.com/in/fathima-shahanaip/' target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn Profile">
-                        <img src={linkedn} alt="LinkedIn" />
-                    </a>
-                    <a href='https://github.com/Fathimashahanaip' target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="GitHub Profile">
-                        <img src={git} alt="GitHub" />
-                    </a>
-                </div>
+    <footer className="footer-section">
+      <div className="footer-blob" />
+      <div className="container">
+        <div className="footer-grid glass">
+          {/* Brand */}
+          <div className="footer-brand">
+            <div className="footer-logo">
+              FATHIMA <span>SHAHANA IP</span>
             </div>
-            <div className="footer-top-right">
-                <div className="footer-links-section">
-                    <h4 className="footer-section-title">Quick Links</h4>
-                    <div className="footer-links">
-                        <a href="#hero" className="footer-link">About</a>
-                        <a href="#experience" className="footer-link">Experience</a>
-                        <a href="#skills" className="footer-link">Skills</a>
-                        <a href="#project" className="footer-link">Projects</a>
-                        <a href="#contact" className="footer-link">Contact</a>
-                    </div>
-                </div>
+            <p>
+              Full Stack MERN Developer from Kerala, India. Passionate about
+              crafting innovative web experiences that make a difference.
+            </p>
+            <div className="footer-socials">
+              {socials.map(s => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="social-btn glass"
+                  style={{ '--sc': s.color }}
+                >
+                  {s.icon}
+                </a>
+              ))}
             </div>
+          </div>
+
+          {/* Quick links */}
+          <div className="footer-links-col">
+            <h4>Quick Links</h4>
+            <ul>
+              {links.map(l => (
+                <li key={l.label}>
+                  <a href={l.href} onClick={e => {
+                    e.preventDefault()
+                    document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' })
+                  }}>
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="footer-contact-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:shahanaip222@gmail.com">shahanaip222@gmail.com</a></li>
+              <li><a href="tel:+919544333819">+91 9544333819</a></li>
+              <li><span>Kozhikode, Kerala, India</span></li>
+            </ul>
+          </div>
         </div>
-        <div className="footer-divider"></div>
+
+        {/* Bottom */}
         <div className="footer-bottom">
-            <div className="footer-bottom-left">
-                <p>© 2025 Fathima Shahana IP. All rights reserved</p>
-            </div>
-            <div className="footer-bottom-right">
-                <a href="#" className="footer-bottom-link">Terms of Services</a>
-                <a href="#" className="footer-bottom-link">Privacy Policy</a>
-                <a href="#contact" className="footer-bottom-link">Connect with Me</a>
-            </div>
+          <p>
+            © {new Date().getFullYear()} FATHIMA SHAHANA IP. Made with&nbsp;
+            <HiHeart className="heart-icon" /> All rights reserved.
+          </p>
+          <motion.button
+            className="scroll-top-btn btn-primary"
+            onClick={scrollTop}
+            whileHover={{ y: -4 }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Scroll to top"
+          >
+            <HiArrowUp />
+          </motion.button>
         </div>
-    </div>
+      </div>
+    </footer>
   )
 }
 

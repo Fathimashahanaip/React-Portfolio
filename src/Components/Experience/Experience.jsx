@@ -1,89 +1,132 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { HiBriefcase, HiLocationMarker, HiCalendar } from 'react-icons/hi'
 import './Experience.css'
 
+const experiences = [
+  {
+    title: 'Full Stack Developer Intern',
+    company: 'Bairuha Tech',
+    location: 'Kozhikode, India',
+    period: 'Jan 2026 – Present',
+    current: true,
+    technologies: ['React.js', 'Next.js', 'Node.js', 'Nest.js', 'MongoDB', 'PostgreSQL', 'Express.js'],
+    description: [
+      'Working as part of a cross-functional team to design and build real-world web applications from requirements to implementation',
+      'Collaborating on feature planning, task division, and code reviews to ensure timely milestone delivery',
+    ],
+  },
+  {
+    title: 'MERN Full Stack Developer Intern',
+    company: 'Futura Labs',
+    location: 'Kozhikode, India',
+    period: 'Jun 2025 – Dec 2025',
+    current: false,
+    technologies: ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'JavaScript', 'RESTful APIs'],
+    description: [
+      'Developed responsive web applications using the MERN stack following modern UI/UX practices',
+      'Built reusable React components and managed application state with hooks',
+      'Implemented RESTful APIs for authentication, CRUD operations, and seamless data flow',
+    ],
+  },
+  {
+    title: 'Software Developer',
+    company: 'Self Projects',
+    period: '2020 – 2022',
+    current: false,
+    technologies: ['React.js', 'Python', 'Django', 'Flask', 'MongoDB', 'JavaScript'],
+    description: [
+      'Built multiple web applications including rental management and e-ration shop platform',
+      'Gained hands-on full-stack development experience across frontend and backend',
+    ],
+  },
+]
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+  }),
+}
+
 const Experience = () => {
-  const experiences = [
-    {
-      title: "Full Stack Developer Intern",
-      company: "Bairuha Tech",
-      location: "Kozhikode, India",
-      technologies: ["React.js",'Next.js',"Node.js",'Nest.js',"MongoDB",'PostgreSQL',"Express.js", "JavaScript", "HTML"],
-      period: "Jan 2026 – Present",
-      description: [
-        "Working as part of a cross-functional development team to design and build a real-world web application from requirements to implementation",
-        "Collaborating with team members to plan features, divide tasks, and review code, ensuring timely delivery of project milestones"
-      ]
-    },
-    {
-      title: "MERN Full Stack Developer Intern",
-      company: "Futura Labs",
-      location: "Kozhikode, India",
-      technologies: ["React.js", "Node.js", "MongoDB", "Express.js", "JavaScript", "RESTful APIs"],
-      period: "Jun 2025 – Dec 2025",
-      description: [
-        "Developed responsive web applications using MongoDB, Express.js, React.js, and Node.js, following modern UI/UX practices",
-        "Built reusable React components and managed application state using hooks, improving code maintainability",
-        "Implemented RESTful APIs with Node.js and Express.js to handle authentication, CRUD operations, and data flow between frontend and backend"
-      ]
-    },
-    {
-      title: "Full Stack Developer",
-      company: "Freelance",
-      technologies: ["React.js", "Node.js", "MongoDB", "Express.js", "JavaScript", "HTML", "CSS"],
-      period: "2022 - Present",
-      description: [
-        "Developed full-stack web applications using MERN stack",
-        "Created responsive and user-friendly interfaces",
-        "Implemented RESTful APIs and database management",
-        "Collaborated on various projects including e-commerce and management systems"
-      ]
-    },
-    {
-      title: "Software Developer",
-      company: "Self Projects",
-      technologies: ["React.js", "Python", "Django", "Flask", "MongoDB", "JavaScript"],
-      period: "2020 - 2022",
-      description: [
-        "Built multiple web applications including rental management system",
-        "Developed e-ration shop platform with payment integration",
-        "Created weather application and todo list management system",
-        "Gained hands-on experience in full-stack development"
-      ]
-    }
-  ]
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <div id="experience" className="experience">
-      <div className="experience-title">
-        <h2>Experience</h2>
-      </div>
-      
-      <div className="experience-container">
-        {experiences.map((exp, index) => (
-          <div key={index} className="experience-item">
-            <div className="experience-header">
-              <div className="experience-title-company">
-                <h3>{exp.title}</h3>
-                <p className="company-name">{exp.company}{exp.location ? ` • ${exp.location}` : ''}</p>
+    <section id="experience" className="section-pad experience-section" ref={ref}>
+      <div className="container">
+        <motion.div
+          className="experience-header"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+        >
+          <span className="section-label">Career</span>
+          <h2 className="section-heading">Work <span>Experience</span></h2>
+          <p className="section-desc">
+            My professional journey — from internships to freelance projects,
+            building real-world applications across industries.
+          </p>
+        </motion.div>
+
+        <div className="timeline">
+          {experiences.map((exp, i) => (
+            <motion.div
+              key={i}
+              className="timeline-item"
+              custom={i}
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              variants={itemVariants}
+            >
+              {/* Timeline dot */}
+              <div className="timeline-dot">
+                <HiBriefcase />
+                {exp.current && <span className="current-ring" />}
               </div>
-              <p className="experience-period">{exp.period}</p>
-            </div>
-            
-            <div className="experience-tech">
-              {exp.technologies.map((tech, techIndex) => (
-                <span key={techIndex} className="tech-tag">{tech}</span>
-              ))}
-            </div>
-            
-            <ul className="experience-description">
-              {exp.description.map((desc, descIndex) => (
-                <li key={descIndex}>{desc}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+
+              {/* Card */}
+              <div className="exp-card glass">
+                <div className="exp-card-top">
+                  <div className="exp-title-group">
+                    <div className="exp-title-row">
+                      <h3>{exp.title}</h3>
+                      {exp.current && <span className="current-badge">Current</span>}
+                    </div>
+                    <div className="exp-meta">
+                      <span className="exp-company">{exp.company}</span>
+                      {exp.location && (
+                        <span className="exp-location">
+                          <HiLocationMarker /> {exp.location}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="exp-period">
+                    <HiCalendar /> {exp.period}
+                  </div>
+                </div>
+
+                <ul className="exp-desc">
+                  {exp.description.map((d, j) => (
+                    <li key={j}>{d}</li>
+                  ))}
+                </ul>
+
+                <div className="exp-tech-row">
+                  {exp.technologies.map((t, j) => (
+                    <span key={j} className="exp-tech-tag">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 
